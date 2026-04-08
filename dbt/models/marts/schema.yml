@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: stg_medals
+    description: "Cleaned and standardized raw medal data"
+    columns:
+      - name: athlete_name
+        tests: [not_null]
+      - name: country_code
+        tests: [not_null]
+      - name: medal_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Gold', 'Silver', 'Bronze']
+
+  - name: dim_country
+    columns:
+      - name: country_code
+        tests: [not_null, unique]
+
+  - name: dim_sport
+    columns:
+      - name: sport_id
+        tests: [not_null, unique]
+
+  - name: dim_games
+    columns:
+      - name: games_id
+        tests: [not_null, unique]
+
+  - name: dim_athlete
+    columns:
+      - name: athlete_id
+        tests: [not_null, unique]
+
+  - name: dim_event
+    columns:
+      - name: event_id
+        tests: [not_null, unique]
+
+  - name: fact_medals
+    columns:
+      - name: medal_id
+        tests: [not_null, unique]
+      - name: medal_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Gold', 'Silver', 'Bronze']
+
+          

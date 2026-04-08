@@ -1,0 +1,12 @@
+requests==2.31.0
+beautifulsoup4==4.12.2
+pandas==2.2.2
+snowflake-connector-python==3.4.1
+sqlalchemy==1.4.49
+snowflake-sqlalchemy==1.5.1
+apache-airflow==2.7.3
+apache-airflow-providers-snowflake==4.0.1
+plotly==5.18.0
+dash==2.14.1
+python-dotenv==1.0.0
+dbt-snowflake==1.7.0

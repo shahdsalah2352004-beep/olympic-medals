@@ -1,0 +1,29 @@
+services:
+  scraper:
+    build: .
+    container_name: olympic-scraper
+    command: python scraper/scrape.py
+    env_file:
+      - .env
+    volumes:
+      - ./scraper/output:/app/scraper/output
+
+  etl:
+    build: .
+    container_name: olympic-etl
+    command: python airflow/dags/run_etl_once.py
+    env_file:
+      - .env
+    volumes:
+      - ./scraper/output:/app/scraper/output
+
+  dashboard:
+    build: .
+    container_name: olympic-dashboard
+    command: python dashboard/app.py
+    env_file:
+      - .env
+    ports:
+      - "8050:8050"
+    depends_on:
+      - etl

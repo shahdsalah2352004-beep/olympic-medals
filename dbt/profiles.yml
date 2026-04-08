@@ -1,0 +1,13 @@
+﻿olympic_medals:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "lmwaeme-zu76185"
+      user: "shahd"
+      password: "57EAVydcCPHyfJG"
+      role: "ACCOUNTADMIN"
+      warehouse: "COMPUTE_WH"
+      database: "OLYMPIC_MEDALS"
+      schema: "PUBLIC"
+      threads: 4

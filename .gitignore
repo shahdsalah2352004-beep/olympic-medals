@@ -1,0 +1,11 @@
+.env
+scraper/output/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.DS_Store
+.venv/
+venv/
+.airflow/
+logs/

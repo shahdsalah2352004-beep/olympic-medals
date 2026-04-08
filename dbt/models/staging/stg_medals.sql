@@ -1,0 +1,14 @@
+{{ config(materialized='view') }}
+
+SELECT
+    TRIM(UPPER(athlete_name)) AS athlete_name,
+    TRIM(UPPER(country_code)) AS country_code,
+    year AS year,
+    TRIM(season) AS season,
+    TRIM(sport) AS sport,
+    TRIM(event_name) AS event_name,
+    TRIM(gender) AS gender,
+    TRIM(medal_type) AS medal_type
+FROM {{ source('public', 'raw_medals') }}
+WHERE athlete_name IS NOT NULL
+AND medal_type IN ('Gold', 'Silver', 'Bronze')
